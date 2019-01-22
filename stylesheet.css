@@ -1,0 +1,14 @@
+body {
+  font-family: Roboto, sans-serif;
+}
+
+.instructions {
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  text-shadow: 0 0 1px white, 0 0 2px white;
+}
+
+h1 {
+  font-size: 1.2em;
+}
