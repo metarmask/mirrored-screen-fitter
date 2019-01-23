@@ -1,12 +1,14 @@
 body {
   font-family: Roboto, sans-serif;
+  background: black;
+  color: white;
 }
 
 .instructions {
   position: fixed;
   top: 0;
   z-index: 1;
-  text-shadow: 0 0 1px white, 0 0 2px white;
+  text-shadow: 0 0 1px black, 0 0 2px black;
 }
 
 h1 {
