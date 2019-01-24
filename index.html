@@ -6,25 +6,43 @@
 </head>
 <body>
 	<header class="instructions">
-		<section>
-			<h1>För att använda i Chrome</h1>
+		<section class="instructions__step">
+			<h1>Utvidga skärmen</h1>
+			<p>På många tangentbord används FN+F8.</p>
+		</section>
+		<section class="instructions__step">
+			<h1>PowerPoint-specifikt</h1>
+			<p>Om du använder PowerPoint:</p>
+			<img src="powerpoint.png">
 			<ol>
-				<li>Klistra in chrome://flags/#enable-experimental-web-platform-features i adressfältet.</li>
-				<li>Aktivera den markerade flaggan genom listan till höger om den.</li>
-				<li>Klicka “Starta om nu” längst ner till höger på sidan.</li>
+				<li>Kryssa ur "Aktivera föredragshållarvy"</li>
+				<li>Ställ in bildskärm till skärmen som inte behöver justeras.</li>
 			</ol>
 		</section>
-		<section>
-			<h1>Generella instruktioner</h1>
+		<section class="instructions__step">
+			<h1>Flytta sidan</h1>
+			<p>Flytta den här sidan genom att dra i dess flik så att den visas på skärmen som behövs justeras.</p>
+		</section>
+		<section class="instructions__step instructions__step--scripted instructions__step-mirror">
+			<h1>Välj skärmen du vill spegla</h1>
+			<p>Välj skärmen som inte visar den här sidan.</p>
+		</section>
+		<section class="instructions__step instructions__step-adjust">
+			<h1>Justera skärmen</h1>
+			<ul>
+				<li>Ändra <em>storleken</em> genom att dra med <em>höger</em> musknapp. (håll in längst ner till höger på pekplatta)</li>
+				<li>Ändra <em>positionen</em> genom att dra med <em>vänster</em> musknapp.</li>
+			</ul>
+			<p>Du kan fortsätta att justera skärmen efter det här steget.</p>
+		</section>
+		<section class="instructions__step instructions__step-done instructions__step--scripted"></section>
+		<section class="instructions__step instructions__step-extension instructions__step--scripted">
+			<h1>Chrome-specifikt: installera ett tillägg</h1>
 			<ol>
-				<li>Klicka en gång någonstans på sidan.</li>
-				<li>Om det står att sidan frågar efter en kamera, se instruktioner för att använda i Chrome ovan.</li>
-				<li>Tillåt att sidan får del av din skärm.</li>
-				<li>Ändra <em>storleken</em> på videon genom att dra med <em>höger</em> musknapp.</li>
-				<li>Ändra <em>positionen</em> på videon genom att dra med <em>vänster</em> musknapp.</li>
-				<li>Dölj den här texten med H.</li>
+				<li>Installera tillägget <a href="https://chrome.google.com/webstore/detail/screen-capturing/ajhifddimkapgcifgcodmmfdlknahffk">Screen Capturing</a>.</li>
+				<li>Ladda om den här sidan.</li>
 			</ol>
 		</section>
 	</header>
-	<video class="video" autoplay></video>
+	<video class="video video--hidden" autoplay></video>
 </body>

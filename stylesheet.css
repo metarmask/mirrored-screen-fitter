@@ -4,13 +4,34 @@ body {
   color: white;
 }
 
+body.no-cursor {
+  cursor: none;
+}
+
 .instructions {
   position: fixed;
   top: 0;
-  z-index: 1;
   text-shadow: 0 0 1px black, 0 0 2px black;
+}
+
+.instructions__step {
+  display: none;
+}
+
+.instructions__step--current {
+  display: block;
 }
 
 h1 {
   font-size: 1.2em;
+}
+
+.video--adjust-with-text {
+  opacity: 0.3;
+  position: relative;
+  z-index: 2;
+}
+
+.video--hidden {
+  display: none;
 }
