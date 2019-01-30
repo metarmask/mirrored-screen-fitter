@@ -40,7 +40,7 @@ function goStep(step, previous) {
     video.classList.add("video--adjust-with-text");
   } else if(step.classList.contains("instructions__step-done")) {
     done = true;
-    console.log("done");
+    makeFullscreen();
   }
 }
 
@@ -149,6 +149,16 @@ async function timeout(ms) {
   });
 }
 
+async function makeFullscreen() {
+  const suffix = "requestFullscreen";
+  for(const prefix of ["", "webkit"]) {
+    const complete = prefix + (!prefix ? suffix : suffix[0].toUpperCase() + suffix.substr(1));
+    if(document.documentElement[complete]) {
+      return document.documentElement[complete]();
+    }
+  }
+}
+
 async function shareScreen() {
   if(!video.srcObject) {
     // TODO: Add for navigator.mediaDevices.getDisplayMedia?
@@ -156,7 +166,6 @@ async function shareScreen() {
     if(navigator.getDisplayMedia) {
       stream = await navigator.getDisplayMedia({video: true});
     } else if(window.chrome) {
-
       stream = await navigator.mediaDevices.getUserMedia((await pGetScreenID()).constraints);
     } else {
       stream = await navigator.mediaDevices.getUserMedia({video: {mediaSource: "screen"}});
