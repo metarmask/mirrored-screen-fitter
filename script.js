@@ -177,8 +177,8 @@ async function shareScreen() {
     const {width, height} = stream.getVideoTracks()[0].getSettings();
     console.log(width, height);
     ratio = width / height;
-    size.x = width;
-    size.y = height;
+    size.x = width / 4;
+    size.y = height / 4;
 	}
 }
 
