@@ -143,9 +143,25 @@ async function pGetScreenID() {
   });
 }
 
-async function timeout(ms) {
-  return new Promise(resolve => {
-    setTimeout(resolve, ms);
+async function timeout(ms, rejectReason) {
+  return new Promise((resolve, reject) => {
+    let callback = resolve;
+    if(rejectReason) {
+      callback = () => {
+        reject(`${rejectReason} (Timed out after ${ms}ms)`);
+      };
+    }
+    setTimeout(callback, ms);
+  });
+};
+
+async function promiseEvent(emitter, name) {
+  return new Promise((resolve, reject) => {
+    const listener = event => {
+      emitter.removeEventListener(name, listener);
+      resolve(event);
+    };
+    emitter.addEventListener(name, listener);
   });
 }
 
@@ -170,12 +186,14 @@ async function shareScreen() {
     } else {
       stream = await navigator.mediaDevices.getUserMedia({video: {mediaSource: "screen"}});
     }
-  	video.srcObject = stream;
+    const loadedMetadata = Promise.race([
+      promiseEvent(video, "loadedmetadata"),
+      timeout(3000, "Could not get video metadata.")
+    ]);
+    video.srcObject = stream;
     video.classList.remove("video--hidden");
-  	// FIXME: Remove the timeout
-    await timeout(500);
+    await loadedMetadata;
     const {width, height} = stream.getVideoTracks()[0].getSettings();
-    console.log(width, height);
     ratio = width / height;
     size.x = width / 4;
     size.y = height / 4;
